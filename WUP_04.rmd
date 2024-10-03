@@ -82,4 +82,4 @@ The difference is obvious within this graph as the LT HIGH SCHOOL-GRADUATE and t
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
 
-
+A relattionship was found within this data, only found when we visually saw a difference with the GRADUATE being significantly higher than the HIGH SCHOOL DEGREE and the LT HIGH SCHOOL DEGREE. To fully see this we saw the numbers showing that there was a difference a the Q1 of the GRADUATE was 10 while the Q3 of LT HIGH SCHOOL is 8.25 and the Q3 of HIGH SCHOOL is 9. This was proven with the one way anova showing a p-value of 0.000236 showing something was happening. After some fiddling around with the code we were able to find the correct way to see a significant difference within this data showing us that HIGH SCHOOL and LT HIGH SCHOOL are below 0 proving there was significant difference within the data. 
