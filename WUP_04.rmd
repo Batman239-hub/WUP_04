@@ -11,7 +11,7 @@ output:
 require(knitr)
 require(tidyverse)
 require(tigerstats)
-
+GSScsv <- read_csv("GSScsv.csv")
 ```
 
 # Introduction
@@ -35,6 +35,19 @@ $H_a$ There is a significant difference in average score on the WORDSUM test bet
 ### Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+basicCN <- ggplot(GSScsv,aes(x=DEGREE,y=WORDSUM))
+```
+```{r}
+basicCN + geom_boxplot()
+```
+With the visual representation we can see that with the significant displayed within the boxplot as GRADUATE have a signifcantly higher first quartile than the HIGH SCHOOL third quartile. Also consider the JUNIOR COLLEGE first quartile being slightly underneath the LT HIGH SCHOOL third quartile. 
+```{r}
+boxplot(WORDSUM~DEGREE,data=GSScsv)
+```
+
+
 
 ### Numerical Descriptive Results
 
