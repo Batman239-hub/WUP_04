@@ -42,22 +42,44 @@ basicCN <- ggplot(GSScsv,aes(x=DEGREE,y=WORDSUM))
 ```{r}
 basicCN + geom_boxplot()
 ```
-With the visual representation we can see that with the significant displayed within the boxplot as GRADUATE have a signifcantly higher first quartile than the HIGH SCHOOL third quartile. Also consider the JUNIOR COLLEGE first quartile being slightly underneath the LT HIGH SCHOOL third quartile. 
+
+With the visual representation we can see that with the significant displayed within the boxplot as GRADUATE have a signifcantly higher first quartile than the HIGH SCHOOL third quartile. Also consider the JUNIOR COLLEGE first quartile being higher than the LT HIGH SCHOOL third quartile. 
 ```{r}
 boxplot(WORDSUM~DEGREE,data=GSScsv)
 ```
-
-
 
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+favstats(WORDSUM~DEGREE,data=GSScsv)
+```
+
+GRADUATE has a Q1 OF 10 compared to the Q3 of LT HIGH SCHOOL is 8.25 and the Q3 of HIGH SCHOOL is 9 despite its high nubers of 85 people. This is important since the number of people in HIGH SCHOOL is almost the combined number of all other DEGREE showing that there is great difference between these values. 
+
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+
+```{r}
+model1 <- aov(WORDSUM~DEGREE,data=GSScsv)
+summary.aov(model1)
+```
+
+The p-value is 0.000236, meaning that there is a statistical difference within these results. So further testing is required to see the difference. 
+
+```{r}
+#we specify the margins starting at the bottom and proceeding clockwise - thus 8.7 is the left side margin to hold the names of the factors
+par(mar = c(3, 17, 2, 2))
+plot(TukeyHSD(model1, conf.level = 0.98), las=2)
+```
+
+The difference is obvious within this graph as the LT HIGH SCHOOL-GRADUATE and the HIGH SCHOOL GRADUATE are below 0 showing that there is a significant difference when it is compared to the other DEGREE. 
 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+
